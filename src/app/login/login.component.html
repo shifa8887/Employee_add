@@ -1,0 +1,23 @@
+
+<div class=" main d-flex flex-column justify-content-center align-items-center " >
+    <h1 class="fw-bolder">Login Page</h1>
+    <div style="background-color: rgb(113, 113, 127); " class="p-5 mt-3 rounded-4">
+      <form [formGroup]="loginForm" >
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">User Name</label>
+          <input name="username" formControlName="username"  type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          @if(loginForm.get('username')?.touched && loginForm.get('username')?.errors){
+            <div class="text-danger fw-bolder">Invalid Username</div>
+          }
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input  name="password" formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+          @if(loginForm.get('password')?.touched && loginForm.get('password')?.errors){
+            <div class="text-danger fw-bolder">Invalid password</div>
+          }
+        </div>
+        <button [disabled]="loginForm.invalid"  type="submit" class="btn btn-primary px-3" routerLink="list">Login</button>
+      </form>
+    </div>
+  </div>

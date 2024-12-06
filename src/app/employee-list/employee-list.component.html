@@ -1,0 +1,71 @@
+<div class=" main d-flex flex-column justify-content-center align-items-center ">
+    <h1 class="fw-bolder">Employee Details</h1>
+    <div class=" w-50  p-3 d-flex flex-column  justify-content-center align-items-center">
+        
+        <button type="button" class="btn btn-primary m-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
+                ADD
+          </button>
+
+        <div class="w-50 ">
+            <ul class="list-group">
+                <li class="list-group-item">Employee Name : {{EmployeeForm.value.ename}}</li>
+                <li class="list-group-item">Contact Number : {{EmployeeForm.value.contactno}}</li>
+                <li class="list-group-item">Email : {{EmployeeForm.value.email}} </li>
+                <li class="list-group-item">Address : {{EmployeeForm.value.address}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Employee Page </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+         <div style="background-color: rgb(255,255,255,0.7); " class="col p-5 mt-3 rounded-4 ">
+            <form [formGroup]="EmployeeForm">
+                <div class="mb-3">
+                    <label for="exampleInputename" class="form-label">Employeename Name</label>
+                    <input name="ename" formControlName="ename" type="text" class="form-control" id="exampleInputename">
+                    @if(EmployeeForm.get('ename')?.touched && EmployeeForm.get('ename')?.errors ){
+                    <div class="text-danger fw-bolder">Invalid Name</div>
+                    }
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputcontact" class="form-label">Contact Number</label>
+                    <input name="contactno" formControlName="contactno" type="text" class="form-control"
+                        id="exampleInputcontactno">
+                    @if(EmployeeForm.get('contactno')?.touched && EmployeeForm.get('contactno')?.errors ){
+                    <div class="text-danger fw-bolder">Invalid Contact Number</div>
+                    }
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputemail" class="form-label">Email</label>
+                    <input name="email" formControlName="email" type="email" class="form-control"
+                        id="exampleInputemail">
+                    @if(EmployeeForm.get('email')?.touched && EmployeeForm.get('email')?.errors ){
+                    <div class="text-danger fw-bolder">Invalid Email</div>
+                    }
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputeaddress" class="form-label">Address</label>
+                    <input name="address" formControlName="address" type="text" class="form-control"
+                        id="exampleInputaddress" aria-describedby="emailHelp">
+                    @if(EmployeeForm.get('address')?.touched && EmployeeForm.get('address')?.errors ){
+                    <div class="text-danger fw-bolder">Invalid Address</div>
+                    }
+                </div>
+                <button [disabled]="EmployeeForm.invalid" type="button" class="btn btn-success" data-bs-dismiss="modal">Submit</button>
+            </form>
+        </div> 
+        </div>
+        
+      </div>
+    </div>
+  </div>
